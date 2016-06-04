@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">LocationTagger</string>
+    <string name="start_info">Press <b>START</b> once you are ready to give location data.</string>
+    <string name="start_text">START</string>
+    <string name="stop_text">STOP</string>
+</resources>
