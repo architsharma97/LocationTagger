@@ -91,17 +91,20 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            progressDialog.dismiss();
-            int responseCode=intent.getIntExtra("Files_Status",-3);
-            switch(responseCode){
-                case 0:
-                    Toast.makeText(getApplicationContext(),"Files sent Successfully",Toast.LENGTH_SHORT).show();
+            int[] responseCodes=intent.getIntArrayExtra("Files_Status");
+            switch(responseCodes[0]){
+                case 1:
+                    progressDialog.setMessage("New File Detected: Uploading");
                     break;
-                case -1:
-                    Toast.makeText(getApplicationContext(),"Unable to send Files",Toast.LENGTH_SHORT).show();
+                case 2:
+                    progressDialog.setMessage("File Uploaded Successfully");
                     break;
-                case -2:
-                    Toast.makeText(getApplicationContext(),"Unable to delete Files",Toast.LENGTH_SHORT).show();
+                case 3:
+                    progressDialog.setMessage("Failed to upload file");
+                    break;
+                case 4:
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(),"Files uploaded: "+responseCodes[1]+" Files failed: "+responseCodes[2],Toast.LENGTH_SHORT).show();
                     break;
             }
         }
