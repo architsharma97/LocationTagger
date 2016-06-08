@@ -122,9 +122,8 @@ public class LocationFilesSendService extends IntentService {
                 localBroadcastManager.sendBroadcast(returnIntent);
             }
 
-            //For each file, one line sent at a time
-
-            /*try {
+            /*For each file, one line sent at a time
+             *try {
                 bufferedReader = new BufferedReader(new FileReader(fileToOpen));
                 Log.d(TAG, "File Found" + fileToOpen);
                 while ((line = bufferedReader.readLine()) != null) {
